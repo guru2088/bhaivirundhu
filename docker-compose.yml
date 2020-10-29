@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  database:
+    container_name: database
+    image: mongo:4.2.0-bionic
+    ports:
+     - "27017:27017"
+    volumes:
+     - '/home/ubuntu/data:/data/db'
+
+  app:
+    container_name: app
+    image: guruskec/bhaivirundhu:v1.2
+    ports:
+      - "5000:8000"
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 8000
+      DBADDRESS: mongodb://database:27017/
+    depends_on:
+     - database

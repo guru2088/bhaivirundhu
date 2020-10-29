@@ -2,17 +2,8 @@
 
 const express = require('express');
 const path = require('path');
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-
-// var util = require('util');
-// var express = require('express');
-// var bodyParser = require('body-parser');
 var axios = require('axios');
 var FormData = require('form-data');
-
-// Constants
 const PORT = process.env.PORT || 8085;
 const HOST = '0.0.0.0';
 var nodemailer = require('nodemailer');
@@ -26,11 +17,11 @@ var transporter = nodemailer.createTransport({
 });
 
 
-
-
-
 const CLIENT_BUILD_PATH = path.join(__dirname, '../../client/build');
 require('dotenv').config()
+
+var MongoClient = require('mongodb').MongoClient;
+var url = process.env.DBADDRESS;
 
 
 const app = express();
@@ -63,7 +54,8 @@ app.get('/Placeorder', (req, response) => {
       addressline_2: req.query.addressline_2,
       city: req.query.city,
       pincode: req.query.pincode,
-      deliverydate: req.query.deliverydate
+      deliverydate: req.query.deliverydate,
+      createddate: new Date()
     }
     dbo.collection("orders").insertOne(myobj, function(err, res) {
       if (err) throw err;
