@@ -38,6 +38,11 @@ import image11 from './images/phone-pe.jpeg';
 import image12 from './images/bank-transfer.png';
 
 
+import image13 from './images/banner.jpeg';
+import image14 from './images/offer.jpeg';
+
+
+
 
 
 
@@ -810,6 +815,24 @@ export default class AnalyticsDashboard1 extends Component {
                                                 </div>
                                             </Col>
                                         </Row>
+
+                                        <Row>
+                                            <Col md="6">
+                                                <div className="card mb-3 widget-chart">
+                                                    <div className="widget-chart-content">
+                                                        <img src = {image13} className = "footerimage" alt = "footer"/>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col md="6">
+                                                <div className="card mb-3 widget-chart">
+                                                    <div className="widget-chart-content">
+                                                        <img src = {image14} className = "footerimage" alt = "footer"/>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                        </Row>
+
                                         <Row>
                                             <Col md="12">
                                                 <div className="card mb-3 widget-chart">

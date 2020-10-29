@@ -11,7 +11,7 @@ services:
 
   app:
     container_name: app
-    image: guruskec/bhaivirundhu:v1.2
+    image: guruskec/bhaivirundhu:v1.3
     ports:
       - "5000:8000"
     restart: always
