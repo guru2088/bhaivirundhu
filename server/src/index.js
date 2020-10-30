@@ -48,6 +48,7 @@ app.get('/Placeorder', (req, response) => {
       item_8: req.query.item_8,
       total: totalamount,
       order_id: order_id,
+      name: req.query.name,
       email: req.query.email,
       mobile: req.query.mobile,
       addressline_1: req.query.addressline_1,
@@ -61,7 +62,7 @@ app.get('/Placeorder', (req, response) => {
       if (err) throw err;
       response.send({value: res, order_id: order_id,status: "success"})
 
-      if(req.query.email != ""){
+
 
         var html = "<h1>Welcome to BhaiVirundhu</h1>";
         html += "<h2>Order ID: "+ order_id +"</h2>";
@@ -151,32 +152,96 @@ app.get('/Placeorder', (req, response) => {
         html += '<tr>';
         html += '<td className = "ordertabletd" align = "center"></td>';
         html += '<td className = "ordertabletd" align = "center"></td>';
-        html += '<td className = "ordertabletd" align = "center">Total Amount</td>';
+        html += '<td className = "ordertabletd" align = "center">Total</td>';
         html += '<td className = "ordertabletd" align = "center">'+totalamount+'</td>';
         html += '</tr>';
 
         html += '</tbody>';
         html += '</table>';
 
-        html += '<h4>Please proceed to make payment through GooglePay,Paytm or PhonePe For +91 9791114463</h4>';
+
+        html += "<br/>";
+        html += "<br/>";
 
 
-        var mailOptions = {
-            from: 'BhaiVirundhu ✔ <bhaivirundhu2020@gmail.com>', // sender address
-            to: req.query.email, // list of receivers
-            subject: 'BhaiVirundhu - Order Placed Successfully - ' + order_id, // Subject line
-            text: 'Hello world ✔', // plaintext body
-            html: html // html body
-        };
 
-        transporter.sendMail(mailOptions, function(error, info){
-            if(error){
-                return console.log(error);
-            }
-            console.log('Message sent: ' + info.response);
-        });
+        html += "<br/>";
+        html += '<b>Name : '+ req.query.name +'</b>';
+        html += "<br/>";
+        html += '<b>Email : '+ req.query.email +'</b>';
+        html += "<br/>";
+        html += '<b>Mobile : '+ req.query.mobile +'</b>';
+        html += "<br/>";
+        html += '<b>Address Line 1 :  '+ req.query.addressline_1 +'</b>';
+        html += "<br/>";
+        html += '<b>Address Line 2 :  '+ req.query.addressline_2 +'</b>';
+        html += "<br/>";
+        html += '<b>City :  '+ req.query.city +'</b>';
+        html += "<br/>";
+        html += '<b>Pincode : '+ req.query.pincode +' </b>';
+        html += "<br/>";
+        html += '<b>Delivery Date :  '+ req.query.deliverydate +'</b>';
+        html += "<br/>";
 
-      }
+        html += "<br/>";
+        html += "<br/>";
+
+
+
+        html += "<br/>";
+        html += '<b>Please proceed to make payment through below options (if Paid Please ignore)</b>';
+        html += "<br/>";
+        html += '<b>Google Pay : +91 9791114463 </b>';
+        html += "<br/>";
+        html += '<b>Paytm : +91 9791114463 </b>';
+        html += "<br/>";
+        html += '<b>PhonePe : +91 9791114463 </b>';
+        html += "<br/>";
+        html += '<b>Account Number : 50100354747390 , IFSC: HDFC0001299 , Account Holder: SYED NIZAM S , Branch: THIRUVOTTIYUR </b>';
+        html += "<br/>";
+
+        html += "<br/>";
+        html += 'Thanks & Regards';
+        html += "<br/>";
+        html += 'BhaiVirundhu Team';
+
+
+
+
+
+        if(req.query.email != ""){
+            var mailOptions = {
+                from: 'BhaiVirundhu ✔ <bhaivirundhu2020@gmail.com>', // sender address
+                to: req.query.email + "," + "bhaivirundhu2020@gmail.com", // list of receivers
+                subject: 'BhaiVirundhu - Order Placed Successfully - ' + order_id, // Subject line
+                text: 'Hello world ✔', // plaintext body
+                html: html // html body
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    return console.log(error);
+                }
+                console.log('Message sent: ' + info.response);
+            });
+
+        }
+        else{
+          var mailOptions = {
+              from: 'BhaiVirundhu ✔ <bhaivirundhu2020@gmail.com>', // sender address
+              to: "bhaivirundhu2020@gmail.com", // list of receivers
+              subject: 'BhaiVirundhu - Order Placed Successfully - ' + order_id, // Subject line
+              text: 'Hello world ✔', // plaintext body
+              html: html // html body
+          };
+
+          transporter.sendMail(mailOptions, function(error, info){
+              if(error){
+                  return console.log(error);
+              }
+              console.log('Message sent: ' + info.response);
+          });
+        }
 
       db.close();
     });

@@ -62,6 +62,7 @@ export default class AnalyticsDashboard1 extends Component {
             qty_6: 0,
             qty_7: 0,
             qty_8: 0,
+            name: '',
             email: '',
             mobile: '',
             cartpopup_state:false,
@@ -173,6 +174,9 @@ export default class AnalyticsDashboard1 extends Component {
       if(this.state.deliverydate === ""){
         alert("Delivery Date Cannot be empty...")
       }
+      else if(this.state.name === ""){
+        alert("Name Cannot be empty...")
+      }
       else if(this.state.mobile === ""){
         alert("Mobile Number Cannot be empty...")
       }
@@ -187,7 +191,7 @@ export default class AnalyticsDashboard1 extends Component {
         console.log(n)
 
         if(n === 0 || n === 3){
-          Placeorder(this.state.qty_1,this.state.qty_2,this.state.qty_3,this.state.qty_4,this.state.qty_5,this.state.qty_6,this.state.qty_7,this.state.qty_8,this.state.email,this.state.mobile,this.state.addressline_1,this.state.addressline_2,this.state.city,this.state.pincode,this.state.deliverydate).then(function(response) {
+          Placeorder(this.state.qty_1,this.state.qty_2,this.state.qty_3,this.state.qty_4,this.state.qty_5,this.state.qty_6,this.state.qty_7,this.state.qty_8,this.state.name,this.state.email,this.state.mobile,this.state.addressline_1,this.state.addressline_2,this.state.city,this.state.pincode,this.state.deliverydate).then(function(response) {
             if(response.value.data.status === "success"){
               history.setState({
                 qty_1: 0,
@@ -198,6 +202,7 @@ export default class AnalyticsDashboard1 extends Component {
                 qty_6: 0,
                 qty_7: 0,
                 qty_8: 0,
+                name: '',
                 email: '',
                 mobile: '',
                 cartpopup_state:false,
@@ -749,12 +754,12 @@ export default class AnalyticsDashboard1 extends Component {
                                                         <Col md="3">
                                                             <div className="card mb-3 widget-chart">
                                                                 <div className="widget-chart-content">
-                                                                    <div className="widget-numbers">
-                                                                        Google Pay
-                                                                    </div>
-                                                                    <img src = {image9} className = "thumbnailimage" alt = "google pay"/>
 
+                                                                    <img src = {image9} className = "thumbnailimage-payment" alt = "google pay"/>
                                                                     <br />
+                                                                    <div className="widget-numbers">
+                                                                        <a href = "https://pay.google.com/">Google Pay</a>
+                                                                    </div>
                                                                     <br />
                                                                     <div className="widget-numbers">
                                                                       +91 9791114463
@@ -765,11 +770,11 @@ export default class AnalyticsDashboard1 extends Component {
                                                         <Col md="3">
                                                             <div className="card mb-3 widget-chart">
                                                                 <div className="widget-chart-content">
-                                                                    <div className="widget-numbers">
-                                                                        Paytm
-                                                                    </div>
-                                                                    <img src = {image10} className = "thumbnailimage" alt = "paytm"/>
+                                                                    <img src = {image10} className = "thumbnailimage-payment" alt = "paytm"/>
                                                                     <br />
+                                                                    <div className="widget-numbers">
+                                                                        <a href = "https://paytm.com/download-paytm-app">Paytm</a>
+                                                                    </div>
                                                                     <br />
                                                                     <div className="widget-numbers">
                                                                       +91 9791114463
@@ -781,11 +786,11 @@ export default class AnalyticsDashboard1 extends Component {
                                                         <Col md="3">
                                                             <div className="card mb-3 widget-chart">
                                                                 <div className="widget-chart-content">
-                                                                    <div className="widget-numbers">
-                                                                        PhonePe
-                                                                    </div>
-                                                                    <img src = {image11} className = "thumbnailimage" alt = "phonepe"/>
+                                                                    <img src = {image11} className = "thumbnailimage-payment" alt = "phonepe"/>
                                                                     <br />
+                                                                    <div className="widget-numbers">
+                                                                        <a href = "https://www.phonepe.com/app-download/">PhonePe</a>
+                                                                    </div>
                                                                     <br />
                                                                     <div className="widget-numbers">
                                                                       +91 9791114463
@@ -799,13 +804,17 @@ export default class AnalyticsDashboard1 extends Component {
                                                                     <div className="widget-numbers">
                                                                         Bank Transfer
                                                                     </div>
-                                                                    <img src = {image12} className = "thumbnailimage"  alt = "bank transfer"/>
+                                                                    <img src = {image12} className = "thumbnailimage-payment"  alt = "bank transfer"/>
                                                                     <br />
                                                                     <br />
                                                                     <div className="widget-heading">
-                                                                      IFSC: XXXXX
+                                                                      Account Number : 50100354747390
                                                                       <br/>
-                                                                      Account Number : XXXXX
+                                                                      IFSC: HDFC0001299
+                                                                      <br/>
+                                                                      Account Holder: SYED NIZAM S
+                                                                      <br/>
+                                                                      Branch: THIRUVOTTIYUR
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -889,6 +898,8 @@ export default class AnalyticsDashboard1 extends Component {
                       <br/>
                       <Input type="date" placeholder="Delivery Date" value={this.state.deliverydate} onChange={event => this.updateInputValue(event)} id = "deliverydate"/>
                       <br/>
+                      <Input type="text" placeholder="Name" value={this.state.name} onChange={event => this.updateInputValue(event)} id = "name"/>
+                      <br/>
                       <Input type="text" placeholder="Email (optional)" value={this.state.email} onChange={event => this.updateInputValue(event)} id = "email"/>
                       <br/>
                       <Input type="text" placeholder="Mobile" value={this.state.mobile} onChange={event => this.updateInputValue(event)} id = "mobile"/>
@@ -912,6 +923,7 @@ export default class AnalyticsDashboard1 extends Component {
                     <ModalHeader >Cart Updated Successfully</ModalHeader>
                     <ModalBody> { this.state.cartmessage } </ModalBody>
                     <ModalFooter>
+                      <Button color="primary" onClick={() => this.placeorderpopup()}>Place order</Button>{' '}
                       <Button color="secondary" onClick={() => this.closecartpopup()}>Close</Button>
                     </ModalFooter>
                   </Modal>
@@ -929,12 +941,12 @@ export default class AnalyticsDashboard1 extends Component {
                             <Col md="12">
                                 <div className="card mb-3 widget-chart">
                                     <div className="widget-chart-content">
-                                        <div className="widget-numbers">
-                                            Google Pay
-                                        </div>
-                                        <img src = {image9} className = "thumbnailimage" alt = "google pay"/>
 
+                                        <img src = {image9} className = "thumbnailimage-payment" alt = "google pay"/>
                                         <br />
+                                        <div className="widget-numbers">
+                                            <a href = "https://pay.google.com/">Google Pay</a>
+                                        </div>
                                         <br />
                                         <div className="widget-numbers">
                                           +91 9791114463
@@ -945,31 +957,31 @@ export default class AnalyticsDashboard1 extends Component {
                           </Row>
                           <Row>
                             <Col md="12">
-                                <div className="card mb-3 widget-chart">
-                                    <div className="widget-chart-content">
-                                        <div className="widget-numbers">
-                                            Paytm
-                                        </div>
-                                        <img src = {image10} className = "thumbnailimage" alt = "paytm"/>
-                                        <br />
-                                        <br />
-                                        <div className="widget-numbers">
-                                          +91 9791114463
-                                        </div>
+                            <div className="card mb-3 widget-chart">
+                                <div className="widget-chart-content">
+                                    <img src = {image10} className = "thumbnailimage-payment" alt = "paytm"/>
+                                    <br />
+                                    <div className="widget-numbers">
+                                        <a href = "https://paytm.com/download-paytm-app">Paytm</a>
                                     </div>
+                                    <br />
+                                    <div className="widget-numbers">
+                                      +91 9791114463
+                                    </div>
+                                </div>
 
-                                </div>
+                            </div>
                             </Col>
                             </Row>
                             <Row>
                             <Col md="12">
                                 <div className="card mb-3 widget-chart">
                                     <div className="widget-chart-content">
-                                        <div className="widget-numbers">
-                                            PhonePe
-                                        </div>
-                                        <img src = {image11} className = "thumbnailimage" alt = "phonepe"/>
+                                        <img src = {image11} className = "thumbnailimage-payment" alt = "phonepe"/>
                                         <br />
+                                        <div className="widget-numbers">
+                                            <a href = "https://www.phonepe.com/app-download/">PhonePe</a>
+                                        </div>
                                         <br />
                                         <div className="widget-numbers">
                                           +91 9791114463
@@ -980,21 +992,25 @@ export default class AnalyticsDashboard1 extends Component {
                             </Row>
                             <Row>
                             <Col md="12">
-                                <div className="card mb-3 widget-chart">
-                                    <div className="widget-chart-content">
-                                        <div className="widget-numbers">
-                                            Bank Transfer
-                                        </div>
-                                        <img src = {image12} className = "thumbnailimage"  alt = "bank transfer"/>
-                                        <br />
-                                        <br />
-                                        <div className="widget-heading">
-                                          IFSC: XXXXX
-                                          <br/>
-                                          Account Number : XXXXX
-                                        </div>
-                                    </div>
-                                </div>
+                              <div className="card mb-3 widget-chart">
+                                  <div className="widget-chart-content">
+                                      <div className="widget-numbers">
+                                          Bank Transfer
+                                      </div>
+                                      <img src = {image12} className = "thumbnailimage-payment"  alt = "bank transfer"/>
+                                      <br />
+                                      <br />
+                                      <div className="widget-heading">
+                                        Account Number : 50100354747390
+                                        <br/>
+                                        IFSC: HDFC0001299
+                                        <br/>
+                                        Account Holder: SYED NIZAM S
+                                        <br/>
+                                        Branch: THIRUVOTTIYUR
+                                      </div>
+                                  </div>
+                              </div>
                             </Col>
                         </Row>
 
