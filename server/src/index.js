@@ -89,7 +89,7 @@ app.get('/Placeorder', (req, response) => {
           html += '<tr>';
           html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">Mutton - கூட்டு குடும்பம்</td>';
           html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">'+ req.query.item_2 +'</td>';
-          html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">1099</td>';
+          html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">1999</td>';
           html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">'+ parseInt(req.query.item_2) * 1999 +'</td>';
           html += '</tr>';
         }
@@ -98,7 +98,7 @@ app.get('/Placeorder', (req, response) => {
           html += '<tr>';
           html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">Chicken - சிறு குடும்பம்</td>';
           html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">'+ req.query.item_3 +'</td>';
-          html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">1099</td>';
+          html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">699</td>';
           html += '<td className = "ordertabletd" align = "center" style = "width: 100%;border: 0.5px solid gray;border-collapse: collapse;">'+ parseInt(req.query.item_3) * 699 +'</td>';
           html += '</tr>';
         }

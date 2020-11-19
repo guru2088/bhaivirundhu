@@ -24,7 +24,7 @@ services:
 
   app:
     container_name: app
-    image: guruskec/bhaivirundhu:v1.7
+    image: guruskec/bhaivirundhu:v1.8
     restart: always
     ports:
       - "8000:8000"
@@ -47,7 +47,7 @@ services:
     volumes:
       - ./.ssl-data:/etc/resty-auto-ssl
     environment:
-      ALLOWED_DOMAINS: '(www).bhaivirundhu.com'
+      ALLOWED_DOMAINS: 'www.bhaivirundhu.com'
       SITES: 'www.bhaivirundhu.com=app:8000;'
       FORCE_HTTPS: "true"
     depends_on:
