@@ -8,23 +8,10 @@ services:
      - "27017:27017"
     volumes:
      - '/home/ubuntu/data:/data/db'
-
-  # app:
-  #   container_name: app
-  #   image: guruskec/bhaivirundhu:v1.4
-  #   ports:
-  #     - "80:8000"
-  #   restart: always
-  #   environment:
-  #     NODE_ENV: production
-  #     PORT: 8000
-  #     DBADDRESS: mongodb://database:27017/
-  #   depends_on:
-  #    - database
-
+     
   app:
     container_name: app
-    image: guruskec/bhaivirundhu:v1.8
+    image: guruskec/bhaivirundhu:v1.9
     restart: always
     ports:
       - "8000:8000"

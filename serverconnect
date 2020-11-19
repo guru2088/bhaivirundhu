@@ -1,0 +1,1 @@
+sudo ssh -i bhaivirundhu.pem ubuntu@15.207.186.171 
