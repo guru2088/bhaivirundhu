@@ -5,8 +5,9 @@
   "homepage": "/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "axios": "^0.20.0",
     "bc-react-session": "^1.5.16",
     "classnames": "^2.2.6",

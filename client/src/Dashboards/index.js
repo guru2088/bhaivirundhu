@@ -15,9 +15,17 @@ import {
 
 } from 'reactstrap';
 
+import {
+  faYoutube,
+  faFacebook,
+  faTwitter,
+  faInstagram
+} from "@fortawesome/free-brands-svg-icons";
 
 import {ToastsContainer, ToastsStore } from 'react-toasts';
 import { Placeorder }  from '../api';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 
 
@@ -311,17 +319,42 @@ export default class AnalyticsDashboard1 extends Component {
 
                     <ToastsContainer position="TOP_CENTER" store={ToastsStore}/>
 
+
+
+
                     <div className="app-main">
                         <div className="app-main__outer">
                             <div className="app-main__inner">
+
+
                                         <Row>
                                             <Col md="12">
                                                 <div className="card mb-3 widget-chart">
                                                     <div className="widget-chart-content">
                                                         <img src = {image7} className = "imglogo" alt = "logo"/>
+
                                                         <br/>
                                                         <br/>
-                                                        <Button  block className="mb-2 mr-2" color="success" onClick={() => this.placeorderpopup()}>Place Order</Button>
+                                                        <h1>சிக்கன் மற்றும் மட்டன் பிரியாணி , கலக்கலான கல்யாண பிரியாணி</h1>
+
+                                                        <br/>
+                                                        <br/>
+
+                                                        <a href="https://www.youtube.com/bhaivirundhu" target = "_blank"
+                                                          className="youtube social">
+                                                          <FontAwesomeIcon icon={faYoutube} size="2x" />
+                                                        </a>
+                                                        <a href="https://www.facebook.com/bhaivirundhu" target = "_blank"
+                                                          className="facebook social">
+                                                          <FontAwesomeIcon icon={faFacebook} size="2x" />
+                                                        </a>
+                                                        <a href="ttps://www.facebook.com/bhaivirundhu" className="twitter social" target = "_blank">
+                                                          <FontAwesomeIcon icon={faTwitter} size="2x" />
+                                                        </a>
+                                                        <a href="ttps://www.facebook.com/bhaivirundhu" target = "_blank"
+                                                          className="instagram social">
+                                                          <FontAwesomeIcon icon={faInstagram} size="2x" />
+                                                        </a>
                                                     </div>
                                                 </div>
 
@@ -734,7 +767,7 @@ export default class AnalyticsDashboard1 extends Component {
                                             <Col md="12">
                                                 <div className="card mb-3 widget-chart">
                                                     <div className="widget-chart-content">
-                                                        <Button block className="mb-2 mr-2" color="success" onClick={() => this.placeorderpopup()}>Place Order</Button>
+                                                        <Button block className="mb-2 mr-2" color="primary" onClick={() => this.placeorderpopup()}>Place Order</Button>
                                                     </div>
                                                 </div>
 
@@ -842,22 +875,7 @@ export default class AnalyticsDashboard1 extends Component {
                                             </Col>
                                         </Row>
 
-                                        <Row>
-                                            <Col md="12">
-                                                <div className="card mb-3 widget-chart">
-                                                    <div className="widget-chart-content">
 
-
-                                                        <div className="widget-numbers">
-                                                          சிக்கன் மட்டும் மட்டன் பிரியாணி , கலக்கலான கல்யாண பிரியாணி
-                                                        </div>
-
-
-                                                        <img src = {image8} className = "footerimage" alt = "footer"/>
-                                                    </div>
-                                                </div>
-                                            </Col>
-                                        </Row>
 
 
                           </div>
